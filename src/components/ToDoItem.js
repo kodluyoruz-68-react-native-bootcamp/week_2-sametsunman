@@ -1,9 +1,10 @@
 import React from 'react';
 import {  View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const ToDoItem = ({todoItem}) => {
+const ToDoItem = ({todoItem,editToDo,removeToDo}) => {
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container,backgroundColor:todoItem.isDone?'#1de9b6':'white'}}>
+      <View style={styles.done}>
       <TouchableOpacity 
           onPress={() => editToDo(todoItem.id)} 
           onLongPress={() => removeToDo(todoItem.id)}
@@ -13,22 +14,23 @@ const ToDoItem = ({todoItem}) => {
           </Text>
         </TouchableOpacity>
     </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
     padding: 10,
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
     borderRadius: 5,
     shadowOpacity: 0.3,
     shadowOffset: {
       width: -5,
       height: 5,
     },
-    elevation: 20,
+    elevation: 10,
   },
   title: {
     marginVertical: 5,
